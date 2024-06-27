@@ -20,7 +20,7 @@ services:
     ports:
       - "6001:6001"
     environment:
-      DATABASE_URL: "postgresql://postgres:password@db:5432/mydb"
+      DATABASE_URL: "postgresql://postgres:password@localhost:5432/mydb"
     depends_on:
       db:
         condition: service_healthy
