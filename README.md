@@ -3,6 +3,9 @@ Make sure you have .env file with the following content ```DATABASE_URL="postgre
 To bring the app alive use the command:
 
 ```docker-compose up --build```
+As all containers are up we need to create database tables and relations, use the following command before moving forward:
+
+```npx prisma migrate dev --name init```
 
 ## Check if the app works
 To check if backend accepts requests and communicates to the database you can post a note or request all notes with the following commands:
