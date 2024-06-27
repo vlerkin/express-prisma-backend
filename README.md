@@ -4,19 +4,23 @@ You need to do a few things before you can run containers with backend and datab
 1. Create a Dockerfile to containerise the backend app; use ```node:16``` image as a base, add a step to generate a prisma client ```RUN npx prisma generate``` and expose port ```6001```.
 2. Create ```compose.yml``` file; for database use ```postgres:13``` image, postgres always communicates on port 5432, add a healthcheck to the database so backend runs only if database is up and running:
 
-```healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U postgres"]
-      interval: 10s
-      timeout: 5s
-      retries: 5```
 ```
+healthcheck:
+   test: ["CMD-SHELL", "pg_isready -U postgres"]
+   interval: 10s
+   timeout: 5s
+   retries: 5
+```
+
 Then to the backend service section add ```depends_on:``` section and define it so that it expect a condition of the database service to be healthy.
 Don't forget to mount volumes.
 
 Your backend service also will need an instruction on how to reach the database, so you need to add
 
-```environment:
-      DATABASE_URL: "postgresql://postgres:password@db:5432/mydb"```
+```
+environment:
+      DATABASE_URL: "postgresql://postgres:password@db:5432/mydb"
+```
 
 ## Running the app
 Make sure you have .env file with the following content ```DATABASE_URL="postgresql://postgres:password@localhost:5432/mydb"```
