@@ -1,7 +1,8 @@
 ## What to do to make it work
 You need to do a few things before you can run containers with backend and database and integrate them with the frontend you created.
 
-1. Create a Dockerfile to containerise the backend app; use ```node:16``` image as a base, add a step to generate a prisma client ```RUN npx prisma generate``` and expose port ```6001```.
+1. Create a Dockerfile to containerise the backend app; use ```node:16``` image as a base, add a step to generate
+a prisma client ```RUN npx prisma generate``` and expose port ```6001```.
 2. Create ```compose.yml``` file; for database use ```postgres:13``` image, postgres always communicates on port 5432, add a healthcheck to the database so backend runs only if database is up and running:
 
 ```
