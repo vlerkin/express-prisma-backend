@@ -1,5 +1,5 @@
 ## Running the app
-Make sure you have .env file with the following content ```DATABASE_URL="postgresql://postgres:password@localhost:5432/mydb?schema=public"```
+Make sure you have .env file with the following content ```DATABASE_URL="postgresql://postgres:password@localhost:5432/mydb"```
 To bring the app alive use the command:
 
 ```docker-compose up --build```
