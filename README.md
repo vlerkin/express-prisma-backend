@@ -9,10 +9,12 @@ You need to do a few things before you can run containers with backend and datab
       interval: 10s
       timeout: 5s
       retries: 5```
+```
 Then to the backend service section add ```depends_on:``` section and define it so that it expect a condition of the database service to be healthy.
 Don't forget to mount volumes.
 
 Your backend service also will need an instruction on how to reach the database, so you need to add
+
 ```environment:
       DATABASE_URL: "postgresql://postgres:password@db:5432/mydb"```
 
